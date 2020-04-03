@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no, address=no, email=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title></title>
+    <link rel="stylesheet" href="css/example.css" />
+    <style>
+        *{ margin:0; padding:0;}
+        
+        html{ font-size:18px; text-align:center;}
+        .i-coin{ display:block; margin:0 auto; width:2.5rem; height:2.5rem;}
+        .i-coin-origin{ width:250px;height:250px;}
+        .i-coin-img{ width:250px;height:3000px;background:url(img/coin_spr.png) no-repeat 0 0;background-size:250px 3000px; -webkit-animation:coin .8s steps(12) infinite;}
+        @keyframes coin{
+            100%{ background-position:0 -3000px;}
+        }
+
+        .loadingtxt{ text-align:center; font-size:24px;}
+        .dot{ display:inline-block; vertical-align:middle; height:1em; line-height:1em; overflow:hidden;}
+        .dot::before{ display:block; content:"...\A..\A."; white-space:pre-wrap; text-align:left; animation:dot 1.5s infinite step-start both;}
+        @keyframes dot{
+            33%{ transform:translateY(-2em);}
+            66%{ transform:translateY(-1em);}
+        }
+        
+        .inpbox{ position:relative; margin:0 auto; width:200px;}
+        .inplbl{ position:absolute; left:10px; top:0; line-height:42px; font-size:18px; color:#999; -webkit-transition:-webkit-transform .3s;}
+        .myinp{ display:block; padding:0 10px; height:40px; font-size:18px; color:#333;}
+        .myinp:placeholder-shown::placeholder{
+            color:transparent;
+        }
+        .myinp:placeholder-shown{
+            color:red;
+        }
+        .myinp:focus-within{
+            color:green;
+        }
+        .myinp:not(:placeholder-shown) ~ .inplbl,
+        .myinp:focus ~ .inplbl{
+            padding:0 6px; line-height:1; color:#2486ff; background-color:#fff;
+            -webkit-transform:scale(0.75) translate(-2px, -14px);
+        }
+
+        .tbbox{ position:relative; margin:0 auto; width:1200px; background-color:#f1f1f1;}
+        .tb{ display:table; width:100%; border-spacing:10px;}
+        .tbcell{ display:table-cell; height:200px; background-color:pink;}
+
+        .vbox{ margin:0 auto; display:flex; width:100px; height:200px; border:1px solid #ddd;}
+        .vbox div{ width:50px; height:50px; margin:auto; background-color:red;}
+
+        .flow-colorful {
+            height: 180px;
+            background: linear-gradient(-45deg, red, orange, yellow, cyan, blue);
+            animation: hue 8s linear infinite;
+        }
+        @keyframes hue {
+            from { filter:hue-rotate(0deg);}
+            to   { filter:hue-rotate(360deg);}
+        }
+
+        .gradienttext{
+            display:inline-block; font-weight:bold; font-size:36px; color:yellow;
+            background-image:-webkit-linear-gradient(left, yellow, green); -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+        }
+
+        .bord{ margin:0 auto; width:200px; height:50px; line-height:50px; text-align:center; font-size:18px; color:#333; border:2px solid #111; border-radius:50px; cursor:pointer; -webkit-transition:box-shadow .2s;}
+        .bord:hover{ box-shadow:inset 0 0 0 2px #f00, 0 24px 10px -16px rgba(0,0,0,.4);}
+
+        .android{ display:flex; justify-content:center; align-items:center; margin:0 auto; width:300px; height:60px; font-family:'monospace'; font-size:16px; color:#333; border:1px solid #ddd; border-radius:6px;}
+
+        .tcell{ margin:0 auto; display:table-cell; vertical-align:middle; width:300px; height:60px; font-family:'monospace'; font-size:16px; color:#333; border:1px solid #ddd; border-radius:60px;}
+
+    </style>
+</head>
+<body>
+
+<div class="flow-colorful"></div>
+
+<br/>
+
+<svg viewBox="0, 0, 250, 250" class="i-coin" id="coin">
+    <foreignObject class="i-coin-origin" width="250" height="250">
+        <div class="i-coin-img"></div>
+    </foreignObject>
+</svg>
+
+<br/>
+
+<div class="loadingtxt">
+    请稍后<div class="dot">…</div>
+</div>
+
+<br/>
+
+<div class="inpbox">
+    <input type="text" class="myinp" placeholder="占位名称" />
+    <label class="inplbl">测试名称</label>
+</div>
+
+<br/>
+
+<div class="tbbox">
+    <div class="tb">
+        <div class="tbcell"></div>
+        <div class="tbcell"></div>
+        <div class="tbcell"></div>
+        <div class="tbcell"></div>
+    </div>
+</div>
+
+<br/>
+
+<p style="font-size:18px; text-align:center;">padding的百分比是相对于其包含块的宽度，而不是高度</p>
+
+<br/>
+
+<div class="vbox">
+    <div></div>
+</div>
+
+<br/>
+
+<p style="font-size:18px; text-align:center;">可以使用outline来描边，不占地方，它甚至可以在里面</p>
+
+<br/>
+
+<p style="font-size:18px; text-align:center;">CSS动画其实是可以暂停的</p>
+
+<br/>
+
+<div class="gradienttext">测试大赛</div>
+
+<br/>
+
+8. 对图标使用 SVG
+
+我们没有理由不对图标使用SVG：
+
+.logo { background: url("logo.svg");}
+
+<br/>
+
+12. 表格单元格等宽
+
+表格工作起来很麻烦，所以务必尽量使用 table-layout: fixed 来保持单元格的等宽：
+
+.calendar { table-layout: fixed;}
+
+<br/>
+
+img标签的object-fit:cover属性
+
+<br/>
+
+宽度100%；background-repeat:repeat-x无限铺满循环整个版面
+background-position-x可以用来做animation动画
+
+<br/>
+<div class="bord">边框线阴影</div>
+<br/>
+
+<p>物理像素线（也就是普通屏幕下 1px ，高清屏幕下 0.5px 的情况）采用 transform 属性 scale 实现。</p>
+<pre style="padding:0 10px; display:inline-block; text-align:left; background-color:#f1f1f1;">
+    <code>
+        .mod_grid {
+            position: relative;
+            &::after {
+                // 实现1物理像素的下边框线
+                content: '';
+                position: absolute;
+                z-index: 1;
+                pointer-events: none;
+                background-color: #ddd;
+                height: 1px;
+                left: 0;
+                right: 0;
+                top: 0;
+                @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+                    -webkit-transform: scaleY(0.5);
+                    -webkit-transform-origin:center top;
+                }
+            }
+        }
+    </code>
+</pre>
+<br/>
+
+<br/>
+<div class="android">line-height垂直居中font-family: monospace;</div>
+<br/>
+
+<br/>
+<div class="tcell">line-height垂直居中font-family: monospace;</div>
+<br/>
+
+<div class="boxline boxline-1"></div>
+<div class="boxline boxline-2"></div>
+<div class="boxline boxline-3"></div>
+<div class="boxline boxline-4"></div>
+
+
+
+<div id="myJs"></div>
+<script>
+    /* 
+        栈的特点：先进后出
+        入栈：push()
+        出栈：pop()
+
+        冒泡排序，选择排序，插入排序
+    */
+
+    function fibonacci(num){
+        if(num===1||num===2){
+            return 1
+        }
+        else{
+            return fibonacci(num-1) + fibonacci(num-2)
+        }
+    }
+
+</script>
+
+</body>
+</html>
